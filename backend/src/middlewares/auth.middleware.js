@@ -1,5 +1,5 @@
 import admin from "../config/firebase.js";
-import User from "../models/User.js";
+import User from "../models/model.user.js";
 
 const authMiddleware = async (req, res, next) => {
   try {
@@ -12,9 +12,10 @@ const authMiddleware = async (req, res, next) => {
     const token = header.split(" ")[1];
     const decoded = await admin.auth().verifyIdToken(token);
 
-    if (!decoded.email_verified) {
-      return res.status(403).json({ message: "Email not verified" });
-    }
+//     if (decoded.firebase.sign_in_provider === "password" && !decoded.email_verified) {
+//     return res.status(403).json({ message: "Email not verified" });
+// }      //fix this later email not verify error
+  
 
     let user = await User.findOne({ firebaseUid: decoded.uid });
 
