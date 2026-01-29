@@ -29,7 +29,7 @@ const Dashboard = () => {
         }
 
         const data = await testProtectedRoute();
-        // console.log("Backend response:", data);
+        console.log("Backend response:", data);
         setUserData(data.user);
       } catch (err) {
         console.error(err.response?.data?.message || err.message);

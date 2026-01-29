@@ -1,5 +1,5 @@
 import admin from "../config/firebase.js";
-import User from "../models/model.user.js";
+import {User} from "../models/user.model.js";
 
 const authMiddleware = async (req, res, next) => {
   try {
